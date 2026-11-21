@@ -737,6 +737,10 @@ def _setup_move(args) -> int:
 def _watch(args) -> int:
     import time
 
+    from rigswap.core import instance
+
+    instance.mark_running()  # installers then ask to close it first
+
     from rigswap import hardware
     from rigswap.core import auto, swap
 

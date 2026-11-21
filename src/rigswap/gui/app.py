@@ -7,15 +7,19 @@ import sys
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
+from rigswap.core import instance
 from rigswap.core.models import LibraryError
 from rigswap.gui import icon_path, theme
+
+APP_ID = "io.github.qpfixxy.RigSwap"
 
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    instance.mark_running()
     app = QApplication.instance() or QApplication(sys.argv)
     app.setApplicationName("RigSwap")
-    app.setDesktopFileName("rigswap")
+    app.setDesktopFileName(APP_ID)  # matches the .desktop file, so Linux shows our icon
     app.setWindowIcon(QIcon(icon_path("app.png")))
     theme.apply(app)
 

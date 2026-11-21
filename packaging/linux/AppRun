@@ -1,0 +1,9 @@
+#!/bin/sh
+# AppImage entry point: "RigSwap.AppImage" opens the app,
+# "RigSwap.AppImage cli <command>" runs the command line (e.g. cli watch).
+HERE="$(dirname "$(readlink -f "$0")")"
+if [ "$1" = "cli" ]; then
+    shift
+    exec "$HERE/usr/lib/rigswap/rigswap-cli" "$@"
+fi
+exec "$HERE/usr/lib/rigswap/RigSwap" "$@"

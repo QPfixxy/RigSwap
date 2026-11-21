@@ -80,3 +80,18 @@ def test_commands_fall_back_to_python_m(monkeypatch, tmp_path):
     assert autostart.gui_command() == [str(tmp_path / "python"), "-m", "rigswap", "gui",
                                        "--tray"]
     assert autostart.watch_command()[-2:] == ["rigswap", "watch"]
+
+
+def test_packaged_builds_start_the_right_thing(monkeypatch, tmp_path):
+    assert autostart.gui_command({"APPIMAGE": "/home/me/Apps/RigSwap.AppImage"}) == \
+        ["/home/me/Apps/RigSwap.AppImage", "--tray"]
+    assert autostart.watch_command({"APPIMAGE": "/a/RigSwap.AppImage"}) == \
+        ["/a/RigSwap.AppImage", "cli", "watch"]
+    assert autostart.gui_command({"FLATPAK_ID": "io.github.qpfixxy.RigSwap"}) == \
+        ["flatpak", "run", "io.github.qpfixxy.RigSwap", "--tray"]
+    install = tmp_path / "RigSwap"
+    install.mkdir()
+    (install / "RigSwap.exe").write_text("")
+    monkeypatch.setattr(autostart.sys, "executable", str(install / "rigswap.exe"))
+    monkeypatch.setattr(autostart.sys, "frozen", True, raising=False)
+    assert autostart.gui_command({}) == [str(install / "RigSwap.exe"), "--tray"]

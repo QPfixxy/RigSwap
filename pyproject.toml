@@ -25,6 +25,10 @@ dev = [
     "pytest-qt>=4.4",
     "ruff>=0.6",
 ]
+# Only for building installers (see packaging/); RigSwap itself doesn't need it
+build = [
+    "pyinstaller>=6.10",
+]
 
 [project.scripts]
 rigswap = "rigswap.cli:main"

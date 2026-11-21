@@ -62,7 +62,16 @@ RigSwap saves each game's settings once for each setup. Pick a setup, or just pl
 
 ## Getting started
 
-> **Pre-release.** There are no installers yet, so run it from source. It needs Python 3.11 or newer.
+### Download
+
+Installers are built for every release (the first one is coming soon) on the [Releases page](https://github.com/QPfixxy/RigSwap/releases):
+
+- **Windows** (x64 or ARM64): run `RigSwap-…-windows-x64-setup.exe`. It installs just for you, without administrator rights.
+- **Linux** (x86_64 or aarch64): download `RigSwap-…-linux-x86_64.AppImage`, make it executable (`chmod +x`), and run it. `RigSwap.AppImage cli <command>` runs the command line.
+
+### From source
+
+It needs Python 3.11 or newer.
 
 ```bash
 git clone https://github.com/QPfixxy/RigSwap.git
@@ -122,7 +131,7 @@ Set `RIGSWAP_DATA_DIR` to use a different folder.
 - [x] **Phase 2:** Automatic config detection, locked setups and change checks
 - [x] **Phase 3:** Automatic switching when an eGPU is connected or disconnected, or on power and display changes
 - [x] **Phase 4:** More launchers, registry settings, engine rules and Learn mode for games nothing else recognises
-- [ ] **Phase 5:** Installers (Windows installer, AppImage, Flatpak)
+- [ ] **Phase 5:** Installers: Windows installer ✓, AppImage ✓, release workflow ✓, Flatpak and the first release to come
 
 See [ROADMAP.md](ROADMAP.md) for details.
 
@@ -133,6 +142,8 @@ pip install -e ".[dev]"
 pytest              # unit, integration and GUI tests (set QT_QPA_PLATFORM=offscreen on a headless machine)
 ruff check .        # lint
 ```
+
+Building installers (see `packaging/`): `pip install -e ".[build]"`, then `packaging\windows\build.ps1` on Windows (needs [Inno Setup 6](https://jrsoftware.org/isinfo.php)) or `packaging/linux/build-appimage.sh` on Linux. Pushing a `vX.Y.Z` tag builds every package in GitHub Actions and creates a draft release.
 
 ```
 src/rigswap/

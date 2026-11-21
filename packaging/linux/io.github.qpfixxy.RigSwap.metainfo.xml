@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.qpfixxy.RigSwap</id>
+  <name>RigSwap</name>
+  <summary>One-click graphics settings for every way you play</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer id="io.github.qpfixxy">
+    <name>QPfixxy</name>
+  </developer>
+  <description>
+    <p>
+      RigSwap keeps a separate copy of each game's graphics settings for each hardware
+      setup you play on, such as a handheld, an eGPU dock or a laptop on battery, and
+      switches all of them at once: by hand, or automatically when you dock.
+    </p>
+    <ul>
+      <li>Imports games from Steam, Heroic and Lutris, including Proton and Wine prefixes</li>
+      <li>Finds config files automatically, recognises Unreal, Unity and Source games, and can learn where any other game keeps its settings</li>
+      <li>Switches automatically when an external GPU is connected or disconnected</li>
+      <li>Never switches under a running game, backs up before every switch, and can undo</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">io.github.qpfixxy.RigSwap.desktop</launchable>
+  <url type="homepage">https://github.com/QPfixxy/RigSwap</url>
+  <url type="bugtracker">https://github.com/QPfixxy/RigSwap/issues</url>
+  <url type="help">https://github.com/QPfixxy/RigSwap/wiki</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://github.com/QPfixxy/RigSwap/raw/main/docs/images/main-window.png</image>
+      <caption>Games, setups and the details of the selected game</caption>
+    </screenshot>
+  </screenshots>
+  <categories>
+    <category>Game</category>
+    <category>Utility</category>
+  </categories>
+  <content_rating type="oars-1.1"/>
+</component>

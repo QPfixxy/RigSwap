@@ -95,8 +95,11 @@ The headless daemon matters for Bazzite and SteamOS-style Game Mode (gamescope),
   - [x] The game config database stays optional: detection keeps working with it turned off
 
 ### Phase 5: Distribution
-- [ ] Windows: PyInstaller build plus an installer
-- [ ] Linux: AppImage first, then Flatpak/Flathub (the natural install route on Bazzite; needs filesystem permissions to reach game folders)
+- [x] Windows: PyInstaller build plus an Inno Setup installer (per user, no admin; optional PATH; uninstall keeps saved configs and removes start-at-login; refuses to update or uninstall while RigSwap runs), x64 and ARM64
+- [x] Linux: AppImage (x86_64 and aarch64; `RigSwap.AppImage cli …` for the command line)
+- [x] Release workflow: tag `vX.Y.Z` → GitHub Actions builds all four packages and creates a draft release
+- [ ] Flatpak/Flathub (the natural install route on Bazzite). Needs a design first: Flatpak apps can't see the host's processes, so the "is the game running?" check needs a host-side helper (e.g. `flatpak-spawn --host`), plus filesystem permissions for game and launcher folders
+- [ ] First tagged release
 - [ ] Community fixes for config paths the manifest gets wrong
 
 ## Related projects

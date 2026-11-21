@@ -24,9 +24,18 @@ VALUE_NAME = "RigSwap"
 SERVICE_NAME = "rigswap-watch.service"
 
 
-def gui_command() -> list[str]:
-    """How to start the app in the tray: the installed launcher, or python -m."""
+def gui_command(env: dict[str, str] | None = None) -> list[str]:
+    """How to start the app in the tray, for however RigSwap was installed."""
+    env = dict(os.environ) if env is None else env
+    if env.get("APPIMAGE"):  # the AppImage file itself, not its temporary mount
+        return [env["APPIMAGE"], "--tray"]
+    if env.get("FLATPAK_ID"):
+        return ["flatpak", "run", env["FLATPAK_ID"], "--tray"]
     bindir = Path(sys.executable).parent
+    if getattr(sys, "frozen", False):  # a packaged build: the app sits next to us
+        for name in ("RigSwap.exe", "RigSwap"):
+            if (bindir / name).is_file():
+                return [str(bindir / name), "--tray"]
     for name in ("rigswap-gui.exe", "rigswap-gui"):
         exe = bindir / name
         if exe.is_file():
@@ -37,11 +46,16 @@ def gui_command() -> list[str]:
     return [sys.executable, "-m", "rigswap", "gui", "--tray"]
 
 
-def watch_command() -> list[str]:
+def watch_command(env: dict[str, str] | None = None) -> list[str]:
+    env = dict(os.environ) if env is None else env
+    if env.get("APPIMAGE"):
+        return [env["APPIMAGE"], "cli", "watch"]
     bindir = Path(sys.executable).parent
-    exe = bindir / ("rigswap.exe" if os.name == "nt" else "rigswap")
-    if exe.is_file():
-        return [str(exe), "watch"]
+    names = ("rigswap-cli.exe", "rigswap-cli") if getattr(sys, "frozen", False) else (
+        ("rigswap.exe",) if os.name == "nt" else ("rigswap",))
+    for name in names:
+        if (bindir / name).is_file():
+            return [str(bindir / name), "watch"]
     return [sys.executable, "-m", "rigswap", "watch"]
 
 
@@ -109,7 +123,7 @@ def linux_desktop_set(enabled: bool, config_home: Path | None = None,
         "Name=RigSwap\n"
         "Comment=Switch game graphics settings when your hardware changes\n"
         f"Exec={exec_line}\n"
-        "Icon=rigswap\n"
+        "Icon=io.github.qpfixxy.RigSwap\n"
         "Terminal=false\n"
         "X-GNOME-Autostart-enabled=true\n",
         encoding="utf-8",

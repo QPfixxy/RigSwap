@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=RigSwap
+GenericName=Game Graphics Switcher
+Comment=Switch every game's graphics settings for your handheld, eGPU dock or laptop
+Exec=RigSwap
+Icon=io.github.qpfixxy.RigSwap
+Terminal=false
+Categories=Game;Utility;
+Keywords=egpu;handheld;graphics;settings;steam;proton;dock;
+StartupWMClass=RigSwap
