@@ -64,7 +64,7 @@ RigSwap saves each game's settings once for each setup. Pick a setup, or just pl
 
 ### Download
 
-Installers are built for every release (the first one is coming soon) on the [Releases page](https://github.com/QPfixxy/RigSwap/releases):
+Get the latest version from the [Releases page](https://github.com/QPfixxy/RigSwap/releases) (the current one, 2.0.0a1, is an alpha):
 
 - **Windows** (x64 or ARM64): run `RigSwap-…-windows-x64-setup.exe`. It installs just for you, without administrator rights.
 - **Linux** (x86_64 or aarch64): download `RigSwap-…-linux-x86_64.AppImage`, make it executable (`chmod +x`), and run it. `RigSwap.AppImage cli <command>` runs the command line.
@@ -131,7 +131,7 @@ Set `RIGSWAP_DATA_DIR` to use a different folder.
 - [x] **Phase 2:** Automatic config detection, locked setups and change checks
 - [x] **Phase 3:** Automatic switching when an eGPU is connected or disconnected, or on power and display changes
 - [x] **Phase 4:** More launchers, registry settings, engine rules and Learn mode for games nothing else recognises
-- [ ] **Phase 5:** Installers: Windows installer ✓, AppImage ✓, release workflow ✓, Flatpak and the first release to come
+- [ ] **Phase 5:** Installers: Windows installer ✓, AppImage ✓, release workflow ✓, first release (2.0.0a1) ✓, Flatpak to come
 
 See [ROADMAP.md](ROADMAP.md) for details.
 

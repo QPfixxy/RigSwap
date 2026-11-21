@@ -99,7 +99,7 @@ The headless daemon matters for Bazzite and SteamOS-style Game Mode (gamescope),
 - [x] Linux: AppImage (x86_64 and aarch64; `RigSwap.AppImage cli …` for the command line)
 - [x] Release workflow: tag `vX.Y.Z` → GitHub Actions builds all four packages and creates a draft release
 - [ ] Flatpak/Flathub (the natural install route on Bazzite). Needs a design first: Flatpak apps can't see the host's processes, so the "is the game running?" check needs a host-side helper (e.g. `flatpak-spawn --host`), plus filesystem permissions for game and launcher folders
-- [ ] First tagged release
+- [x] First tagged release (2.0.0a1, 2026-11-21)
 - [ ] Community fixes for config paths the manifest gets wrong
 
 ## Related projects
