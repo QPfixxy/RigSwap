@@ -10,7 +10,7 @@ $root = Resolve-Path "$PSScriptRoot\..\.."
 Set-Location $root
 
 $version = python -c "import rigswap; print(rigswap.__version__)"
-# Windows wants four numbers: 2.0.0.dev0 -> 2.0.0.0
+# Windows wants four numbers: 2.0.0a1 -> 2.0.0.1
 $numeric = python -c "import re, rigswap; n = re.findall(r'\d+', rigswap.__version__) + ['0'] * 4; print('.'.join(n[:4]))"
 Write-Host "Building RigSwap $version ($Arch)"
 
